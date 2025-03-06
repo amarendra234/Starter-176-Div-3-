@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        typedef long long ll;
+        ll n,c;
+        cin>>n>>c;
+        string s;
+        cin>>s;
+        ll totalCost=0;
+        unordered_map<char,ll>umap;
+        for(char ch:s){
+            umap[ch]++;
+        }
+        vector<ll>v;
+        for(auto nbr:umap){
+            v.push_back(nbr.second);
+        }
+        sort(v.begin(),v.end());
+        ll cost=0;
+        for(auto ele:v){
+             ll cost1=c;
+             ll cost2=INT_MAX;
+             ll newCost=0;
+             if(cost==0){
+                newCost=ele;
+                cost2=(newCost*(newCost+1))/2;
+             }else{
+                ll preCost=(cost*(cost+1))/2;
+                 newCost=cost+ele;
+                 cost2=((newCost*(newCost+1)/2))-preCost;
+             }
+             if(cost1==cost2){
+                totalCost+=cost1;
+             }else if(cost1>cost2){
+                cost=newCost;
+                totalCost+=cost2;
+             }else{
+                totalCost+=cost1;
+             }
+
+        }
+        cout<<totalCost<<endl;
+    }
+}
