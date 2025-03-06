@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int x,y,z,a,b,c;
+        cin>>x>>y>>z>>a>>b>>c;
+        int res=0;
+        if(x>=a){
+            res+=a;
+            a=0;
+        }else{
+            res+=x;
+            a-=x;
+            if(y>=a){
+                res+=a;
+                y-=a;
+            }else{
+                res+=y;
+                a-=y;
+                y=0;
+                if(z>=a){
+                    res+=a;
+                    z-=a;
+                }else{
+                    res+=z;
+                    z=0;
+                }
+            }
+        }
+        if(y>=b){
+            res+=b;  
+        }else{
+            res+=y;
+            b-=y;
+            if(z>=b){
+                res+=b;
+                z-=b;
+            }else{
+                res+=z;
+                z=0;
+            }
+        }
+        if(z>=c){
+            res+=c;
+        }else{
+            res+=z;
+        }
+        cout<<res<<endl;
+    }
+    
+}
