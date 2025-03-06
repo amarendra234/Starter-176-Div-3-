@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        string a,b;
+        cin>>a>>b;
+        unordered_map<string,int>umap;
+        for(int i=0;i<n;i++){
+            if(a[i]=='0' and b[i]=='0'){
+                umap["00"]++;
+            }else if(a[i]=='1' and b[i]=='1'){
+                umap["11"]++;
+            }else{
+                umap["01"]++;
+            }
+        }
+        int odd=0;
+        for(auto nbr:umap){
+            if(nbr.second%2){
+                odd++;
+            }
+        }
+        if(odd<=1){
+            cout<<"YES"<<endl;
+        }else{
+            cout<<"NO"<<endl;
+        }
+    }
+}
