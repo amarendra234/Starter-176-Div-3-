@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        typedef long long ll;
+        ll n, m;
+	    cin >> n >> m;
+	    set<ll>ans;
+	    ans.insert(n);
+	    for(ll i = 0; i < 63; ++i)
+	    {
+	        ll mask = (1ll << i);
+	        if(((mask|n) <= m)){
+	           ans.insert(mask|n);
+            }
+	    }
+	    if(ans.size() == 1)
+	    {
+	        cout << -1 << "\n";
+	        continue;
+	    }
+	    cout << ans.size() << "\n";
+	    for(auto &i : ans){
+	        cout << i << " ";
+        }
+	    cout << "\n";
+    }
+}
